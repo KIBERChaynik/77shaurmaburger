@@ -3,519 +3,1705 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>77 ШаурмаБургеры | Вкусно • Быстро • Калининград</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>77 ШаурмаБургеры — Калининград</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #e63946;
-            --primary-dark: #c1121f;
-            --secondary: #1d3557;
-            --accent: #f4a261;
-            --light: #f8f9fa;
-            --dark: #212529;
-            --gray: #6c757d;
-            --success: #2a9d8f;
-            --shadow: 0 4px 20px rgba(0,0,0,0.1);
-            --shadow-hover: 0 8px 30px rgba(0,0,0,0.15);
-            --radius: 16px;
-            --radius-sm: 12px;
-            --transition: all 0.3s ease;
+            --red: #E63946;
+            --dark-red: #C1121F;
+            --orange: #F4A261;
+            --yellow: #E9C46A;
+            --dark: #1D1D2C;
+            --darker: #151521;
+            --card-bg: #232337;
+            --light: #F1FAEE;
+            --gray: #A8DADC;
+            --text-muted: #9999AA;
+            --radius: 20px;
+            --shadow: 0 8px 32px rgba(0,0,0,0.3);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Open Sans', sans-serif;
-            color: var(--dark);
-            background: var(--light);
-            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
+            background: var(--darker);
+            color: var(--light);
             overflow-x: hidden;
         }
 
-        h1, h2, h3, h4 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            line-height: 1.3;
-        }
+        h1,h2,h3,h4,h5 { font-family: 'Montserrat', sans-serif; }
 
         .container {
-            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
 
-        /* Header & Navigation */
+        /* === HEADER === */
         header {
-            background: linear-gradient(135deg, var(--secondary), #0d1b2a);
-            color: white;
-            position: sticky;
-            top: 0;
+            position: fixed;
+            top: 0; left: 0; right: 0;
             z-index: 1000;
-            box-shadow: var(--shadow);
+            background: rgba(21,21,33,0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            transition: all 0.3s;
         }
 
-        .header-top {
+        header.scrolled {
+            background: rgba(21,21,33,0.95);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.4);
+        }
+
+        .header-inner {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            justify-content: space-between;
+            padding: 16px 0;
         }
 
         .logo {
             display: flex;
             align-items: center;
             gap: 12px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
+            text-decoration: none;
         }
 
         .logo-icon {
-            background: var(--primary);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-        }
-
-        .header-info {
-            display: flex;
-            gap: 20px;
-            font-size: 0.9rem;
-        }
-
-        .header-info i {
-            color: var(--accent);
-            margin-right: 5px;
-        }
-
-        .rating-badge {
-            background: var(--success);
+            width: 48px; height: 48px;
+            background: linear-gradient(135deg, var(--red), var(--orange));
+            border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem;
+            font-weight: 900;
             color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 4px;
+            font-family: 'Montserrat', sans-serif;
+            box-shadow: 0 4px 15px rgba(230,57,70,0.4);
         }
 
-        .cashback-badge {
-            background: linear-gradient(135deg, var(--accent), #e76f51);
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.25rem;
             color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-weight: 600;
-            animation: pulse 2s infinite;
         }
 
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(244, 162, 97, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(244, 162, 97, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(244, 162, 97, 0); }
-        }
+        .logo-text span { color: var(--red); }
 
-        nav {
-            display: flex;
-            justify-content: center;
-            padding: 15px 0;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
+        nav { display: flex; align-items: center; gap: 8px; }
 
         nav a {
-            color: white;
+            color: var(--text-muted);
             text-decoration: none;
+            padding: 10px 18px;
+            border-radius: 12px;
             font-weight: 500;
-            font-size: 1.05rem;
-            padding: 8px 12px;
-            border-radius: 8px;
-            transition: var(--transition);
+            font-size: 0.92rem;
+            transition: all 0.3s;
             position: relative;
         }
 
         nav a:hover, nav a.active {
-            background: rgba(255,255,255,0.15);
+            color: white;
+            background: rgba(255,255,255,0.08);
         }
 
-        nav a.active::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
-            height: 3px;
-            background: var(--accent);
-            border-radius: 3px;
+        .header-badges {
+            display: flex; gap: 10px; align-items: center;
         }
 
-        .mobile-menu-btn {
+        .badge {
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            display: flex; align-items: center; gap: 6px;
+            white-space: nowrap;
+        }
+
+        .badge-star {
+            background: rgba(233,196,106,0.15);
+            color: var(--yellow);
+        }
+
+        .badge-cashback {
+            background: rgba(230,57,70,0.15);
+            color: var(--red);
+        }
+
+        .badge-open {
+            background: rgba(42,157,143,0.15);
+            color: #2A9D8F;
+            animation: pulseOpen 2s infinite;
+        }
+
+        @keyframes pulseOpen {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(42,157,143,0.3); }
+            50% { box-shadow: 0 0 0 8px rgba(42,157,143,0); }
+        }
+
+        .burger {
             display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
+            background: none; border: none;
+            color: white; font-size: 1.5rem;
+            cursor: pointer; padding: 8px;
         }
 
-        /* Hero Section */
+        /* === HERO === */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)), url('https://avatars.mds.yandex.net/get-altay/15431134/2a000001970d7d2bbae6cd7177549adb2cfd/XXXL') center/cover no-repeat;
-            color: white;
-            text-align: center;
-            padding: 80px 20px;
+            min-height: 100vh;
+            display: flex; align-items: center;
             position: relative;
+            overflow: hidden;
+            padding-top: 100px;
         }
 
         .hero::before {
             content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(29,53,87,0.9), rgba(230,57,70,0.85));
-            z-index: 1;
+            position: absolute; inset: 0;
+            background: 
+                radial-gradient(ellipse at 20% 50%, rgba(230,57,70,0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(244,162,97,0.1) 0%, transparent 50%);
         }
 
-        .hero-content {
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
             position: relative;
             z-index: 2;
-            max-width: 800px;
-            margin: 0 auto;
         }
 
-        .hero h1 {
-            font-size: 3.5rem;
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            line-height: 1.1;
             margin-bottom: 20px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
-        .hero p {
-            font-size: 1.4rem;
-            margin-bottom: 30px;
-            opacity: 0.95;
+        .hero-content h1 .highlight {
+            background: linear-gradient(135deg, var(--red), var(--orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin: 30px 0;
-            flex-wrap: wrap;
+        .hero-content p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+            line-height: 1.7;
         }
 
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-value {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--accent);
-        }
-
-        .stat-label {
-            font-size: 0.95rem;
-            opacity: 0.9;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 20px;
+        .hero-buttons {
+            display: flex; gap: 16px; flex-wrap: wrap;
         }
 
         .btn {
-            padding: 14px 32px;
+            padding: 16px 32px;
+            border-radius: 16px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
             border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.05rem;
             cursor: pointer;
-            transition: var(--transition);
+            transition: all 0.3s;
             text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: var(--shadow);
+            display: inline-flex; align-items: center; gap: 10px;
         }
 
         .btn-primary {
-            background: var(--primary);
+            background: linear-gradient(135deg, var(--red), var(--dark-red));
             color: white;
+            box-shadow: 0 8px 30px rgba(230,57,70,0.4);
         }
 
         .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(230,57,70,0.5);
         }
 
-        .btn-secondary {
-            background: white;
-            color: var(--secondary);
-        }
-
-        .btn-secondary:hover {
-            background: var(--light);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .open-badge {
-            background: var(--success);
+        .btn-outline {
+            background: transparent;
             color: white;
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-weight: 600;
-            display: inline-flex;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--orange);
+            background: rgba(244,162,97,0.1);
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
             align-items: center;
-            gap: 8px;
-            margin-top: 15px;
-            animation: bounce 2s infinite;
         }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-10px);}
-            60% {transform: translateY(-5px);}
+        .hero-img-wrapper {
+            width: 100%;
+            max-width: 500px;
+            aspect-ratio: 1;
+            border-radius: 30px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: var(--shadow);
         }
 
-        /* Section Styles */
-        section {
-            padding: 70px 0;
+        .hero-img-wrapper img {
+            width: 100%; height: 100%;
+            object-fit: cover;
         }
 
-        .section-title {
+        .hero-img-wrapper::after {
+            content: '';
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(21,21,33,0.6), transparent 50%);
+        }
+
+        .hero-float-card {
+            position: absolute;
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 16px 20px;
+            display: flex; align-items: center; gap: 12px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255,255,255,0.06);
+            animation: floatCard 3s ease-in-out infinite;
+            z-index: 3;
+        }
+
+        .hero-float-card.top-left { top: 10%; left: -20px; animation-delay: 0s; }
+        .hero-float-card.bottom-right { bottom: 15%; right: -20px; animation-delay: 1.5s; }
+
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .float-icon {
+            width: 44px; height: 44px;
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .float-icon.red { background: rgba(230,57,70,0.15); color: var(--red); }
+        .float-icon.green { background: rgba(42,157,143,0.15); color: #2A9D8F; }
+
+        .float-text .float-label { font-size: 0.75rem; color: var(--text-muted); }
+        .float-text .float-value { font-weight: 700; font-size: 1rem; }
+
+        /* === STATS === */
+        .stats {
+            padding: 40px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 28px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.06);
+            transition: all 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(230,57,70,0.3);
+            box-shadow: 0 10px 40px rgba(230,57,70,0.15);
+        }
+
+        .stat-icon {
+            width: 56px; height: 56px;
+            margin: 0 auto 16px;
+            border-radius: 16px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem;
+        }
+
+        .stat-icon.si-1 { background: rgba(230,57,70,0.12); color: var(--red); }
+        .stat-icon.si-2 { background: rgba(233,196,106,0.12); color: var(--yellow); }
+        .stat-icon.si-3 { background: rgba(42,157,143,0.12); color: #2A9D8F; }
+        .stat-icon.si-4 { background: rgba(244,162,97,0.12); color: var(--orange); }
+
+        .stat-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+        }
+
+        /* === SECTION HEADERS === */
+        .section-header {
             text-align: center;
             margin-bottom: 50px;
         }
 
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--secondary);
-            position: relative;
-            display: inline-block;
-            padding-bottom: 15px;
+        .section-tag {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 8px 20px;
+            background: rgba(230,57,70,0.1);
+            color: var(--red);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 16px;
         }
 
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 70px;
-            height: 4px;
-            background: var(--accent);
-            border-radius: 2px;
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 800;
+            margin-bottom: 12px;
         }
 
-        .section-title p {
-            color: var(--gray);
-            margin-top: 15px;
-            font-size: 1.1rem;
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        /* About Section */
-        .about {
-            background: white;
-        }
+        /* === ABOUT === */
+        .about { padding: 80px 0; }
 
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
+            gap: 60px;
             align-items: center;
         }
 
         .about-image {
             border-radius: var(--radius);
             overflow: hidden;
-            box-shadow: var(--shadow-hover);
-            height: 400px;
-            background: url('https://avatars.mds.yandex.net/get-altay/18114977/2a0000019c4278f5cc83bfd3514617211741/XXXL') center/cover no-repeat;
+            position: relative;
+            aspect-ratio: 4/3;
         }
 
-        .about-content h3 {
-            font-size: 1.8rem;
+        .about-image img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .about-image:hover img { transform: scale(1.05); }
+
+        .about-image::after {
+            content: '';
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(21,21,33,0.7), transparent 60%);
+        }
+
+        .about-text h3 {
+            font-size: 1.6rem;
             margin-bottom: 20px;
-            color: var(--secondary);
+            line-height: 1.4;
         }
 
-        .about-content p {
-            margin-bottom: 20px;
-            font-size: 1.05rem;
+        .about-text p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 28px;
         }
 
-        .features-list {
+        .about-features {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-top: 25px;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
         }
 
-        .feature-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .about-feature {
+            display: flex; align-items: center; gap: 12px;
+            padding: 14px 18px;
+            background: var(--card-bg);
+            border-radius: 14px;
+            border: 1px solid rgba(255,255,255,0.06);
+            transition: all 0.3s;
+        }
+
+        .about-feature:hover {
+            border-color: rgba(230,57,70,0.3);
+            transform: translateX(5px);
+        }
+
+        .about-feature i {
+            color: var(--orange);
+            font-size: 1.1rem;
+        }
+
+        .about-feature span {
+            font-size: 0.92rem;
             font-weight: 500;
         }
 
-        .feature-item i {
-            color: var(--primary);
-            font-size: 1.2rem;
-        }
-
-        /* Menu Section */
-        .menu {
-            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
-        }
+        /* === MENU === */
+        .menu { padding: 80px 0; }
 
         .menu-filters {
             display: flex;
             justify-content: center;
             gap: 10px;
-            margin-bottom: 35px;
+            margin-bottom: 40px;
             flex-wrap: wrap;
         }
 
         .filter-btn {
-            padding: 8px 20px;
-            background: white;
-            border: 2px solid var(--secondary);
-            border-radius: 30px;
+            padding: 10px 24px;
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: transparent;
+            color: var(--text-muted);
+            font-family: 'Inter', sans-serif;
             font-weight: 500;
+            font-size: 0.9rem;
             cursor: pointer;
-            transition: var(--transition);
+            transition: all 0.3s;
         }
 
-        .filter-btn.active, .filter-btn:hover {
-            background: var(--secondary);
+        .filter-btn:hover {
+            border-color: var(--red);
+            color: var(--red);
+        }
+
+        .filter-btn.active {
+            background: var(--red);
+            border-color: var(--red);
             color: white;
         }
 
         .menu-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
         }
 
-        .menu-item {
-            background: white;
-            border-radius: var(--radius-sm);
+        .menu-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
             overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            display: flex;
-            flex-direction: column;
+            border: 1px solid rgba(255,255,255,0.06);
+            transition: all 0.4s;
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        .menu-item:hover {
+        .menu-card:hover {
             transform: translateY(-8px);
-            box-shadow: var(--shadow-hover);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            border-color: rgba(230,57,70,0.2);
         }
 
-        .menu-item-image {
-            height: 180px;
-            background: linear-gradient(45deg, var(--secondary), var(--primary));
+        .menu-card-img {
+            height: 200px;
+            background: linear-gradient(135deg, var(--card-bg), rgba(230,57,70,0.2));
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
         }
 
-        .menu-item-content {
-            padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
+        .menu-card-img img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
         }
 
-        .menu-item-header {
+        .menu-card:hover .menu-card-img img { transform: scale(1.08); }
+
+        .menu-card-img .food-icon {
+            font-size: 4rem;
+            opacity: 0.5;
+        }
+
+        .menu-card-tag {
+            position: absolute;
+            top: 16px; left: 16px;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .tag-hit { background: var(--red); color: white; }
+        .tag-new { background: var(--orange); color: var(--dark); }
+        .tag-pp { background: #2A9D8F; color: white; }
+        .tag-spicy { background: #FF6B35; color: white; }
+
+        .menu-card-body {
+            padding: 24px;
+        }
+
+        .menu-card-top {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
-        .menu-item-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--secondary);
-        }
-
-        .menu-item-price {
-            background: var(--primary);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
+        .menu-card-title {
+            font-family: 'Montserrat', sans-serif;
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 1.15rem;
         }
 
-        .menu-item-desc {
-            color: var(--gray);
-            margin-bottom: 15px;
-            flex-grow: 1;
-            font-size: 0.95rem;
+        .menu-card-price {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.3rem;
+            color: var(--red);
+            white-space: nowrap;
         }
 
-        .menu-item-meta {
+        .menu-card-desc {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .menu-card-footer {
             display: flex;
             justify-content: space-between;
-            color: var(--gray);
-            font-size: 0.9rem;
-            border-top: 1px solid #eee;
-            padding-top: 12px;
-        }
-
-        .add-to-cart {
-            background: var(--secondary);
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 10px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: var(--transition);
-            margin-top: 10px;
-            display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 8px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255,255,255,0.06);
         }
 
-        .add-to-cart:hover {
-            background: var(--primary);
+        .menu-card-weight {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            display: flex; align-items: center; gap: 6px;
         }
 
-        /* Reviews Section */
-        .reviews {
-            background: white;
+        .add-btn {
+            width: 44px; height: 44px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--red), var(--dark-red));
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 15px rgba(230,57,70,0.3);
         }
+
+        .add-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(230,57,70,0.5);
+        }
+
+        /* === REVIEWS === */
+        .reviews { padding: 80px 0; background: rgba(35,35,55,0.5); }
 
         .reviews-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 24px;
+        }
+
+        .review-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 28px;
+            border: 1px solid rgba(255,255,255,0.06);
+            transition: all 0.3s;
+        }
+
+        .review-card:hover {
+            border-color: rgba(233,196,106,0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+
+        .review-avatar {
+            width: 50px; height: 50px;
+            border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: white;
+            flex-shrink: 0;
+        }
+
+        .review-avatar.av-1 { background: linear-gradient(135deg, #E63946, #F4A261); }
+        .review-avatar.av-2 { background: linear-gradient(135deg, #2A9D8F, #E9C46A); }
+        .review-avatar.av-3 { background: linear-gradient(135deg, #A8DADC, #1D1D2C); }
+        .review-avatar.av-4 { background: linear-gradient(135deg, #FF6B35, #E63946); }
+
+        .review-info { flex: 1; }
+        .review-name { font-weight: 600; font-size: 1rem; margin-bottom: 2px; }
+        .review-level { color: var(--text-muted); font-size: 0.82rem; }
+        .review-date { color: var(--text-muted); font-size: 0.82rem; white-space: nowrap; }
+
+        .review-stars {
+            display: flex; gap: 3px;
+            margin-bottom: 14px;
+        }
+
+        .review-stars i { color: var(--yellow); font-size: 0.9rem; }
+
+        .review-text {
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* === INFO === */
+        .info { padding: 80px 0; }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .info-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 32px;
+            border: 1px solid rgba(255,255,255,0.06);
+            transition: all 0.3s;
+        }
+
+        .info-card:hover {
+            border-color: rgba(244,162,97,0.3);
+            transform: translateY(-5px);
+        }
+
+        .info-card-icon {
+            width: 52px; height: 52px;
+            border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+        }
+
+        .info-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 18px;
+        }
+
+        .info-list { list-style: none; }
+
+        .info-list li {
+            display: flex; align-items: center; gap: 10px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            color: var(--text-muted);
+            font-size: 0.92rem;
+        }
+
+        .info-list li:last-child { border-bottom: none; }
+
+        .info-list li i {
+            color: var(--orange);
+            width: 18px;
+            text-align: center;
+        }
+
+        /* === MAP SECTION === */
+        .map-section {
+            padding: 80px 0;
+            background: rgba(35,35,55,0.5);
+        }
+
+        .map-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.06);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .map-info {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .map-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .map-address {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 24px;
+            display: flex; align-items: center; gap: 10px;
+        }
+
+        .map-address i { color: var(--red); }
+
+        .map-details {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-bottom: 28px;
+        }
+
+        .map-detail {
+            display: flex; align-items: center; gap: 12px;
+        }
+
+        .map-detail-icon {
+            width: 40px; height: 40px;
+            border-radius: 10px;
+            background: rgba(230,57,70,0.1);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--red);
+            font-size: 0.95rem;
+        }
+
+        .map-detail-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .map-detail-text strong { color: white; display: block; margin-bottom: 2px; }
+
+        .map-frame {
+            min-height: 350px;
+            background: linear-gradient(135deg, rgba(230,57,70,0.1), rgba(244,162,97,0.05));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-frame::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: 
+                repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(255,255,255,0.02) 40px, rgba(255,255,255,0.02) 41px),
+                repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,0.02) 40px, rgba(255,255,255,0.02) 41px);
+        }
+
+        .map-pin {
+            position: relative; z-index: 2;
+            text-align: center;
+        }
+
+        .map-pin i {
+            font-size: 3rem;
+            color: var(--red);
+            animation: pinBounce 2s infinite;
+        }
+
+        @keyframes pinBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .map-pin span {
+            display: block;
+            margin-top: 10px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* === FOOTER === */
+        footer {
+            background: var(--dark);
+            border-top: 1px solid rgba(255,255,255,0.06);
+            padding: 50px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin: 16px 0 20px;
+            font-size: 0.92rem;
+        }
+
+        .footer-social {
+            display: flex; gap: 12px;
+        }
+
+        .footer-social a {
+            width: 42px; height: 42px;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.06);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            background: var(--red);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .footer-col h4 {
+            font-size: 1rem;
+            margin-bottom: 18px;
+            color: white;
+        }
+
+        .footer-col a {
+            display: block;
+            color: var(--text-muted);
+            text-decoration: none;
+            padding: 6px 0;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: var(--red);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            padding-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .footer-bottom p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* === SCROLL TO TOP === */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px; right: 30px;
+            width: 50px; height: 50px;
+            border-radius: 14px;
+            background: var(--red);
+            color: white;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s;
+            box-shadow: 0 6px 25px rgba(230,57,70,0.4);
+            z-index: 999;
+        }
+
+        .scroll-top.visible {
+            opacity: 1; visibility: visible;
+            transform: translateY(0);
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 35px rgba(230,57,70,0.5);
+        }
+
+        /* === ANIMATIONS === */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 1024px) {
+            .hero-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero-image { display: none; }
+            .hero-buttons { justify-content: center; }
+            .about-grid { grid-template-columns: 1fr; }
+            .about-image { max-height: 350px; }
+            .info-grid { grid-template-columns: 1fr 1fr; }
+            .map-card { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            nav { display: none; }
+            nav.open {
+                display: flex;
+                position: absolute;
+                top: 100%; left: 0; right: 0;
+                background: rgba(21,21,33,0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 20px;
+                border-bottom: 1px solid rgba(255,255,255,0.06);
+            }
+            nav.open a { padding: 14px 20px; width: 100%; }
+            .burger { display: block; }
+            .header-badges { display: none; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .menu-grid { grid-template-columns: 1fr; }
+            .reviews-grid { grid-template-columns: 1fr; }
+            .info-grid { grid-template-columns: 1fr; }
+            .about-features { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 { font-size: 2rem; }
+            .btn { padding: 14px 24px; font-size: 0.92rem; }
+            .stats-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+            .stat-card { padding: 20px; }
+            .stat-number { font-size: 1.5rem; }
+        }
+
+        /* === CART NOTIFICATION === */
+        .cart-toast {
+            position: fixed;
+            bottom: 30px; left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--card-bg);
+            border: 1px solid rgba(230,57,70,0.3);
+            color: white;
+            padding: 16px 28px;
+            border-radius: 16px;
+            display: flex; align-items: center; gap: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            z-index: 9999;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .cart-toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        .cart-toast i { color: #2A9D8F; font-size: 1.3rem; }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header id="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="#" class="logo">
+                    <div class="logo-icon">77</div>
+                    <div class="logo-text">Шаурма<span>Бургеры</span></div>
+                </a>
+                <nav id="mainNav">
+                    <a href="#hero" class="active">Главная</a>
+                    <a href="#about">О нас</a>
+                    <a href="#menu">Меню</a>
+                    <a href="#reviews">Отзывы</a>
+                    <a href="#info">Инфо</a>
+                    <a href="#map">Контакты</a>
+                </nav>
+                <div class="header-badges">
+                    <div class="badge badge-star"><i class="fas fa-star"></i> 5.0</div>
+                    <div class="badge badge-cashback"><i class="fas fa-gift"></i> 5%</div>
+                    <div class="badge badge-open"><i class="fas fa-clock"></i> Открыто до 20:00</div>
+                </div>
+                <button class="burger" id="burgerBtn" aria-label="Меню">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <h1>Вкусная <span class="highlight">шаурма</span> и сочные бургеры в Калининграде</h1>
+                    <p>«77 ШаурмаБургеры» — заведение быстрого питания на Клинической ул., 77, где каждое блюдо приготовлено с любовью из свежих ингредиентов.</p>
+                    <div class="hero-buttons">
+                        <a href="#menu" class="btn btn-primary">
+                            <i class="fas fa-utensils"></i> Смотреть меню
+                        </a>
+                        <a href="#map" class="btn btn-outline">
+                            <i class="fas fa-map-marker-alt"></i> Как добраться
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-img-wrapper">
+                        <img src="https://avatars.mds.yandex.net/get-altay/15431134/2a000001970d7d2bbae6cd7177549adb2cfd/XXXL" alt="77 ШаурмаБургеры" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#1D1D2C,#E63946);font-size:5rem;\'>🌯</div>'">
+                    </div>
+                    <div class="hero-float-card top-left">
+                        <div class="float-icon red"><i class="fas fa-star"></i></div>
+                        <div class="float-text">
+                            <div class="float-label">Рейтинг</div>
+                            <div class="float-value">5.0 / 5.0</div>
+                        </div>
+                    </div>
+                    <div class="hero-float-card bottom-right">
+                        <div class="float-icon green"><i class="fas fa-gift"></i></div>
+                        <div class="float-text">
+                            <div class="float-label">Кешбэк</div>
+                            <div class="float-value">5% на всё</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card fade-up">
+                    <div class="stat-icon si-1"><i class="fas fa-star"></i></div>
+                    <div class="stat-number">5.0</div>
+                    <div class="stat-label">Рейтинг заведения</div>
+                </div>
+                <div class="stat-card fade-up" style="transition-delay: 0.1s;">
+                    <div class="stat-icon si-2"><i class="fas fa-comments"></i></div>
+                    <div class="stat-number">68</div>
+                    <div class="stat-label">Отзывов от гостей</div>
+                </div>
+                <div class="stat-card fade-up" style="transition-delay: 0.2s;">
+                    <div class="stat-icon si-3"><i class="fas fa-gift"></i></div>
+                    <div class="stat-number">5%</div>
+                    <div class="stat-label">Кешбэк на всё</div>
+                </div>
+                <div class="stat-card fade-up" style="transition-delay: 0.3s;">
+                    <div class="stat-icon si-4"><i class="fas fa-clock"></i></div>
+                    <div class="stat-number">20:00</div>
+                    <div class="stat-label">Время работы</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header fade-up">
+                <div class="section-tag"><i class="fas fa-info-circle"></i> О заведении</div>
+                <h2>Почему выбирают нас</h2>
+                <p>Мы создаём атмосферу, в которой хочется возвращаться снова и снова</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-image fade-up">
+                    <img src="https://avatars.mds.yandex.net/get-altay/18114977/2a0000019c4278f5cc83bfd3514617211741/XXXL" alt="Интерьер 77 ШаурмаБургеры" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#1D1D2C,#F4A261);font-size:5rem;\'>🍔</div>'">
+                </div>
+                <div class="about-text fade-up">
+                    <h3>Быстрое питание с душой и вкусом</h3>
+                    <p>«77 ШаурмаБургеры» — это заведение быстрого питания, где можно попробовать вкусную шаурму и бургеры. Крафтовый интерьер, приятная музыка и приветливый персонал сделают ваш визит максимально комфортным.</p>
+                    <div class="about-features">
+                        <div class="about-feature">
+                            <i class="fas fa-leaf"></i>
+                            <span>Свежие ингредиенты</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-paw"></i>
+                            <span>Можно с животными</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-laptop"></i>
+                            <span>Можно с ноутбуком</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-wifi"></i>
+                            <span>Бесплатный Wi-Fi</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-truck"></i>
+                            <span>Доставка Яндекс.Еда</span>
+                        </div>
+                        <div class="about-feature">
+                            <i class="fas fa-seedling"></i>
+                            <span>ПП-меню</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MENU -->
+    <section class="menu" id="menu">
+        <div class="container">
+            <div class="section-header fade-up">
+                <div class="section-tag"><i class="fas fa-fire"></i> Наше меню</div>
+                <h2>Попробуйте лучшее</h2>
+                <p>Обновлено 20 мая — всегда свежие блюда и новые вкусы</p>
+            </div>
+            <div class="menu-filters fade-up">
+                <button class="filter-btn active" data-filter="all">Все</button>
+                <button class="filter-btn" data-filter="shaurma">Шаурма</button>
+                <button class="filter-btn" data-filter="hotdog">Хот-доги</button>
+                <button class="filter-btn" data-filter="snack">Закуски</button>
+                <button class="filter-btn" data-filter="drink">Напитки</button>
+            </div>
+            <div class="menu-grid" id="menuGrid">
+                <!-- Шаурма Грибная -->
+                <div class="menu-card fade-up" data-category="shaurma">
+                    <div class="menu-card-img">
+                        <div class="food-icon">🍄</div>
+                        <div class="menu-card-tag tag-new">Новинка</div>
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-top">
+                            <div class="menu-card-title">Шаурма Грибная</div>
+                            <div class="menu-card-price">420 ₽</div>
+                        </div>
+                        <p class="menu-card-desc">Лесные тайны и ароматные грибы собрались вместе, чтобы доказать: шаурма может быть не только мясной, но и волшебной</p>
+                        <div class="menu-card-footer">
+                            <div class="menu-card-weight"><i class="fas fa-weight-hanging"></i> 340 г</div>
+                            <button class="add-btn" aria-label="Добавить"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Шаурма ПП -->
+                <div class="menu-card fade-up" data-category="shaurma">
+                    <div class="menu-card-img">
+                        <div class="food-icon">💪</div>
+                        <div class="menu-card-tag tag-pp">ПП</div>
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-top">
+                            <div class="menu-card-title">Шаурма ПП</div>
+                            <div class="menu-card-price">420 ₽</div>
+                        </div>
+                        <p class="menu-card-desc">Для тех, кто следит за фигурой, но не готов расставаться с удовольствием — лёгкая, полезная и очень вкусная</p>
+                        <div class="menu-card-footer">
+                            <div class="menu-card-weight"><i class="fas fa-weight-hanging"></i> 300 г</div>
+                            <button class="add-btn" aria-label="Добавить"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Шаурма классическая -->
+                <div class="menu-card fade-up" data-category="shaurma">
+                    <div class="menu-card-img">
+                        <div class="food-icon">🌯</div>
+                        <div class="menu-card-tag tag-hit">Хит</div>
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-top">
+                            <div class="menu-card-title">Шаурма классическая</div>
+                            <div class="menu-card-price">345 ₽</div>
+                        </div>
+                        <p class="menu-card-desc">Настоящий герой улиц — всегда готова выручить голодного и подарить вкусный праздник в каждом укусе</p>
+                        <div class="menu-card-footer">
+                            <div class="menu-card-weight"><i class="fas fa-weight-hanging"></i> 330 г</div>
+                            <button class="add-btn" aria-label="Добавить"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Шаурма острая -->
+                <div class="menu-card fade-up" data-category="shaurma">
+                    <div class="menu-card-img">
+                        <div class="food-icon">🌶️</div>
+                        <div class="menu-card-tag tag-spicy">Острая</div>
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-top">
+                            <div class="menu-card-title">Шаурма острая</div>
+                            <div class="menu-card-price">420 ₽</div>
+                        </div>
+                        <p class="menu-card-desc">Для тех, кто любит, чтобы язык немного попотел — огненный заряд бодрости и вкуса в каждом укусе</p>
+                        <div class="menu-card-footer">
+                            <div class="menu-card-weight"><i class="fas fa-weight-hanging"></i> 340 г</div>
+                            <button class="add-btn" aria-label="Добавить"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Шаурма сырная -->
+                <div class="menu-card fade-up" data-category="shaurma">
+                    <div class="menu-card-img">
+                        <div class="food-icon">🧀</div>
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-top">
+                            <div class="menu-card-title">Шаурма сырная</div>
+                            <div class="menu-card-price">420 ₽</div>
+                        </div>
+                        <p class="menu-card-desc">Когда сыр решил устроить вечеринку, и все ингредиенты собрались на танцполе лаваша — сырная шаурма в ударе</p>
+                        <div class="menu-card-footer">
+                            <div class="menu-card-weight"><i class="fas fa-weight-hanging"></i> 340 г</div>
+                            <button class="add-btn" aria-label="Добавить"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Хот-дог французский -->
+                <div class="menu-card fade-up" data-category="hotdog">
+                    <div class="menu-card-img">
+                        <div class="food-icon">🥖</div>
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-top">
+                            <div class="menu-card-title">Хот-дог французский</div>
+                            <div class="menu-card-price">315 ₽</div>
+                        </div>
+                        <p class="menu-card-desc">Хот-дог с шиком и шармом Парижа. Хрустящий багет, изысканные соусы в каждом укусе. Bon appétit!</p>
+                        <div class="menu-card-footer">
+                            <div class="menu-card-weight"><i class="fas fa-weight-hanging"></i> 290 г</div>
+                            <button class="add-btn" aria-label="Добавить"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Картошка фри -->
+                <div class="menu-card fade-up" data-category="snack">
+                    <div class="menu-card-img">
+                        <div class="food-icon">🍟</div>
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-top">
+                            <div class="menu-card-title">Картошка фри</div>
+                            <div class="menu-card-price">260 ₽</div>
+                        </div>
+                        <p class="menu-card-desc">Золотистая, хрустящая картошечка из отборного картофеля — идеальный компаньон к любому блюду</p>
+                        <div class="menu-card-footer">
+                            <div class="menu-card-weight"><i class="fas fa-weight-hanging"></i> 120 г</div>
+                            <button class="add-btn" aria-label="Добавить"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Сырные палочки L -->
+                <div class="menu-card fade-up" data-category="snack">
+                    <div class="menu-card-img">
+                        <div class="food-icon">🧀</div>
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-top">
+                            <div class="menu-card-title">Сырные палочки L</div>
+                            <div class="menu-card-price">390 ₽</div>
+                        </div>
+                        <p class="menu-card-desc">Тягучий сыр в хрустящей панировке — большая порция для настоящих ценителей</p>
+                        <div class="menu-card-footer">
+                            <div class="menu-card-weight"><i class="fas fa-weight-hanging"></i> 142 г • 6 шт</div>
+                            <button class="add-btn" aria-label="Добавить"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Сырные палочки S -->
+                <div class="menu-card fade-up" data-category="snack">
+                    <div class="menu-card-img">
+                        <div class="food-icon">🧀</div>
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-top">
+                            <div class="menu-card-title">Сырные палочки S</div>
+                            <div class="menu-card-price">260 ₽</div>
+                        </div>
+                        <p class="menu-card-desc">Компактная порция хрустящих сырных палочек — быстро, вкусно, удобно</p>
+                        <div class="menu-card-footer">
+                            <div class="menu-card-weight"><i class="fas fa-weight-hanging"></i> 71 г • 3 шт</div>
+                            <button class="add-btn" aria-label="Добавить"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Добрый Cola -->
+                <div class="menu-card fade-up" data-category="drink">
+                    <div class="menu-card-img">
+                        <div class="food-icon">🥤</div>
+                    </div>
+                    <div class="menu-card-body">
+                        <div class="menu-card-top">
+                            <div class="menu-card-title">Добрый Cola без сахара</div>
+                            <div class="menu-card-price">140 ₽</div>
+                        </div>
+                        <p class="menu-card-desc">Освежающий кола-напиток без сахара — идеальное дополнение к вашему заказу</p>
+                        <div class="menu-card-footer">
+                            <div class="menu-card-weight"><i class="fas fa-glass-martini-alt"></i> 330 мл</div>
+                            <button class="add-btn" aria-label="Добавить"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <div class="section-header fade-up">
+                <div class="section-tag"><i class="fas fa-quote-right"></i> Отзывы</div>
+                <h2>Что говорят гости</h2>
+                <p>Реальные отзывы наших постоянных клиентов</p>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card fade-up">
+                    <div class="review-header">
+                        <div class="review-avatar av-1">ОК</div>
+                        <div class="review-info">
+                            <div class="review-name">Олег Кулаков</div>
+                            <div class="review-level">Знаток города 2 уровня</div>
+                        </div>
+                        <div class="review-date">21 мая</div>
+                    </div>
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">Хорошее заведение в крафтовом стиле. Приятная музыка. Готовят вкусно.</p>
+                </div>
+
+                <div class="review-card fade-up" style="transition-delay: 0.1s;">
+                    <div class="review-header">
+                        <div class="review-avatar av-2">СН</div>
+                        <div class="review-info">
+                            <div class="review-name">Семенова Наталия</div>
+                            <div class="review-level">Знаток города 5 уровня</div>
+                        </div>
+                        <div class="review-date">20 мая</div>
+                    </div>
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">Приветливый персонал, грибная шаурма очень понравилась, однозначно рекомендую.</p>
+                </div>
+
+                <div class="review-card fade-up" style="transition-delay: 0.2s;">
+                    <div class="review-header">
+                        <div class="review-avatar av-3">О</div>
+                        <div class="review-info">
+                            <div class="review-name">Ольга</div>
+                            <div class="review-level">Знаток города 21 уровня</div>
+                        </div>
+                        <div class="review-date">17 мая</div>
+                    </div>
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">Приятно удивили. Не особо приметное место. Нашли, так как в меню указана пп шаурма. Очень понравилась, для человека, который не ест шаурму в традиционном виде — вообще находка.</p>
+                </div>
+
+                <div class="review-card fade-up" style="transition-delay: 0.3s;">
+                    <div class="review-header">
+                        <div class="review-avatar av-4">ИС</div>
+                        <div class="review-info">
+                            <div class="review-name">Ирина С.</div>
+                            <div class="review-level">Знаток города 2 уровня</div>
+                        </div>
+                        <div class="review-date">16 мая</div>
+                    </div>
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">Очень вкусная шаурма с грибами и курицей. Вкус солёного огурчика и салатных листьев. Ммм. Сытно. Плотно. Честно. Еле доела свою порцию. Спасибо огромное!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INFO -->
+    <section class="info" id="info">
+        <div class="container">
+            <div class="section-header fade-up">
+                <div class="section-tag"><i class="fas fa-info-circle"></i> Информация</div>
+                <h2>Всё, что нужно знать</h2>
+                <p>Полезная информация для вашего визита</p>
+            </div>
+            <div class="info-grid">
+                <div class="info-card fade-up">
+                    <div class="info-card-icon" style="background: rgba(230,57,70,0.12); color: var(--red);"><i class="fas fa-concierge-bell"></i></div>
+                    <h3>Услуги</h3>
+                    <ul class="info-list">
+                        <li><i class="fas fa-truck"></i> Доставка еды (Яндекс.Еда, Delivery Club)</li>
+                        <li><i class="fas fa-shopping-bag"></i> Еда навынос</li>
+                        <li><i class="fas fa-box-open"></i> Самовывоз</li>
+                        <li><i class="fas fa-calendar-check"></i> Предзаказ онлайн</li>
+                        <li><i class="fas fa-coffee"></i> Кофе с собой</li>
+                    </ul>
+                </div>
+
+                <div class="info-card fade-up" style="transition-delay: 0.1s;">
+                    <div class="info-card-icon" style="background: rgba(42,157,143,0.12); color: #2A9D8F;"><i class="fas fa-credit-card"></i></div>
+                    <h3>Оплата</h3>
+                    <ul class="info-list">
+                        <li><i class="fas fa-money-bill-wave"></i> Наличные</li>
+                        <li><i class="fas fa-credit-card"></i> Банковская карта</li>
+                        <li><i class="fas fa-qrcode"></i> СБП / QR-код</li>
+                        <li><i class="fas fa-wifi"></i> Бесконтактная оплата</li>
+                        <li><i class="fas fa-file-invoice-dollar"></i> Безналичный расчёт</li>
+                    </ul>
+                </div>
+
+                <div class="info-card fade-up" style="transition-delay: 0.2s;">
+                    <div class="info-card-icon" style="background: rgba(244,162,97,0.12); color: var(--orange);"><i class="fas fa-tag"></i></div>
+                    <h3>Кухня и особенности</h3>
+                    <ul class="info-list">
+                        <li><i class="fas fa-utensils"></i> Мясная, американская, восточная</li>
+                        <li><i class="fas fa-pepper-hot"></i> Хот-доги, шаурма, гриль, донер</li>
+                        <li><i class="fas fa-seedling"></i> Правильное питание, фитнес</li>
+                        <li><i class="fas fa-paw"></i> Можно с животными</li>
+                        <li><i class="fas fa-laptop"></i> Можно с ноутбуком</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAP -->
+    <section class="map-section" id="map">
+        <div class="container">
+            <div class="section-header fade-up">
+                <div class="section-tag"><i class="fas fa-map-marker-alt"></i> Контакты</div>
+                <h2>Как нас найти</h2>
+                <p>Ждём вас в гости каждый день до 20:00</p>
+            </div>
+            <div class="map-card fade-up">
+                <div class="map-info">
+                    <h3>77 ШаурмаБургеры</h3>
+                    <div class="map-address">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Клиническая ул., 77, Калининград
+                    </div>
+                    <div class="map-details">
+                        <div class="map-detail">
+                            <div class="map-detail-icon"><i class="fas fa-clock"></i></div>
+                            <div class="map-detail-text">
+                                <strong>Время работы</strong>
+                                Ежедневно до 20:00
+                            </div>
+                        </div>
+                        <div class="map-detail">
+                            <div class="map-detail-icon"><i class="fas fa-table"></i></div>
+                            <div class="map-detail-text">
+                                <strong>Посадочные места</strong>
+                                До 7 столов в зале
+                            </div>
+                        </div>
+                        <div class="map-detail">
+                            <div class="map-detail-icon"><i class="fas fa-store"></i></div>
+                            <div class="map-detail-text">
+                                <strong>Тип заведения</strong>
+                                Бистро, бургерная, фаст-фуд
+                            </div>
+                        </div>
+                    </div>
+                    <a href="https://yandex.ru/maps/?text=Клиническая+ул+77+Калининград" target="_blank" class="btn btn-primary" style="align-self: flex-start;">
+                        <i class="fas fa-directions"></i> Построить маршрут
+                    </a>
+                </div>
+                <div class="map-frame">
+                    <div class="map-pin">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Клиническая ул., 77<br>Калининград</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo" style="margin-bottom: 4px;">
+                        <div class="logo-icon">77</div>
+                        <div class="logo-text">Шаурма<span>Бургеры</span></div>
+                    </a>
+                    <p>Заведение быстрого питания в Калининграде. Вкусная шаурма, сочные бургеры и крафтовая атмосфера.</p>
+                    <div class="footer-social">
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="VK"><i class="fab fa-vk"></i></a>
+                        <a href="#" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Навигация</h4>
+                    <a href="#hero">Главная</a>
+                    <a href="#about">О нас</a>
+                    <a href="#menu">Меню</a>
+                    <a href="#reviews">Отзывы</a>
+                    <a href="#info">Информация</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Популярное</h4>
+                    <a href="#menu">Шаурма классическая</a>
+                    <a href="#menu">Шаурма Грибная</a>
+                    <a href="#menu">Шаурма ПП</a>
+                    <a href="#menu">Шаурма сырная</a>
+                    <a href="#menu">Хот-дог французский</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Контакты</h4>
+                    <a href="#"><i class="fas fa-map-marker-alt" style="margin-right:6px;"></i>Клиническая ул., 77</a>
+                    <a href="#"><i class="fas fa-clock" style="margin-right:6px;"></i>До 20:00</a>
+                    <a href="#"><i class="fas fa-truck" style="margin-right:6px;"></i>Яндекс.Еда</a>
+                    <a href="#"><i class="fas fa-gift" style="margin-right:6px;"></i>Кешбэк 5%</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 77 ШаурмаБургеры. Все права защищены.</p>
+                <p>Сделано с ❤️ в Калининграде</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- SCROLL TO TOP -->
+    <button class="scroll-top" id="scrollTopBtn" aria-label="Наверх">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- CART TOAST -->
+    <div class="cart-toast" id="cartToast">
+        <i class="fas fa-check-circle"></i>
+        <span>Добавлено в заказ!</span>
+    </div>
+
+    <script>
+        // Header scroll effect
+        const headerEl = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            headerEl.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Mobile menu
+        const burgerBtn = document.getElementById('burgerBtn');
+        const mainNav = document.getElementById('mainNav');
+        burgerBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('open');
+            const icon = burgerBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Close mobile menu on link click
+        mainNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('open');
+                const icon = burgerBtn.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            });
+        });
+
+        // Active nav link on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = mainNav.querySelectorAll('a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 120;
+                if (window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Scroll to top button
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        window.addEventListener('scroll', () => {
+            scrollTopBtn.classList.toggle('visible', window.scrollY > 500);
+        });
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Fade-up animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-up');
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    fadeObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        fadeElements.forEach(el => fadeObserver.observe(el));
+
+        // Menu filters
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const menuCards = document.querySelectorAll('.menu-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.dataset.filter;
+
+                menuCards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = '';
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Add to cart toast
+        const cartToast = document.getElementById('cartToast');
+        let toastTimeout;
+
+        document.querySelectorAll('.add-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                clearTimeout(toastTimeout);
+                cartToast.classList.add('show');
+                toastTimeout = setTimeout(() => {
+                    cartToast.classList.remove('show');
+                }, 2500);
+            });
+        });
+    </script>
+</body>
+</html>
+
